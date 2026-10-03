@@ -1000,34 +1000,3 @@ tab = {
 {[CFrame.new(98.499939, 2.10006142, -29.8997192, 0, 0, 1, 1, 0, 0, 0, 1, 0)] = 'Generic',[2] = 'Wall2TallThin'},
 {[CFrame.new(98.9998779, 0.200281143, -60.4998779, -1, 0, 0, 0, 1, 0, 0, 0, -1)] = 'Walnut',[2] = 'Wall2TallThin'},
 }
-
-        for i, v in pairs(tab) do
-            local CFrame, treeclass
-            for i, v in pairs(v) do
-                if i ~= 2 then
-                    CFrame = i
-                    treeclass = v
-                end
-            end
-            local name = v[2]
-            
-            local part
-            
-            if treeclass ~= "Box" then
-                part = game.ReplicatedStorage.ClientItemInfo:FindFirstChild(name):FindFirstChildOfClass('Model'):Clone()
-            else
-                part = game.ReplicatedStorage.ClientItemInfo:FindFirstChild(name):FindFirstChild(name):Clone()
-            end
-            
-            part.Parent = workspace.Preview
-            part:SetPrimaryPartCFrame(CFrame)
-            local class = Instance.new('StringValue', part)
-            class.Name = 'TreeClass'
-            class.Value = treeclass
-            part.Name = name
-            for k, l in pairs(part:GetChildren()) do
-                if not l:IsA('BasePart') then continue end
-                if l.Transparency == 0 then l.Transparency = 0.5 end
-            end
-        end
-        
